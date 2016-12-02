@@ -36,6 +36,11 @@ public class IssLocationFetcher {
 	private LinkedBlockingQueue<IssLocation> queue;
 	private JerseyClient client;
 	
+  public IssLocationFetcher() {
+    // If a queue isn't provided, set one up
+    this.queue = new LinkedBlockingQueue<IssLocation>();
+  }
+
 	public IssLocationFetcher(LinkedBlockingQueue<IssLocation> queue) {
 		this.queue = queue;
 		
@@ -45,6 +50,8 @@ public class IssLocationFetcher {
 		
 		// Set up rounding for lat/lng
 		df.setRoundingMode(RoundingMode.HALF_UP); 
+
+    // TODO make the interval configurable
 		scheduler.scheduleAtFixedRate(() -> {
 			fetch();
 		}, 0, 30, TimeUnit.SECONDS);
