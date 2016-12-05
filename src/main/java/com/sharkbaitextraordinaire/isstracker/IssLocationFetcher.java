@@ -55,7 +55,7 @@ public class IssLocationFetcher {
 		// TODO make the interval configurable
 		scheduler.scheduleAtFixedRate(() -> {
 			fetch();
-		}, 0, 30, TimeUnit.SECONDS);
+		}, 0, POLL_INTERVAL, TimeUnit.SECONDS);
 	}
 
 	public void fetch() {

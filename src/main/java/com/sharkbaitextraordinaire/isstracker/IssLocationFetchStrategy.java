@@ -1,6 +1,8 @@
 package com.sharkbaitextraordinaire.isstracker;
 
 public interface IssLocationFetchStrategy {
+	
+	// TODO add rate-limiting handling to our API here?
 
 	/**
 	 * The url which will be requested to fetch the ISS location
